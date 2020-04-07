@@ -24,18 +24,24 @@ public:
     void setBackgroundColor(QColor color){backgroundColor_ = color;}
     QColor getBackgroundColor()const{return backgroundColor_;}
 
-    void setShapes(ShapeType shape){shape_ = shape;}
+    void setShapes(ShapeType shape);
     ShapeType getShapes()const{return shape_;}
 protected:
     void paintEvent(QPaintEvent* event) Q_DECL_OVERRIDE;
 
 signals:
 private:
+    float intervalLength_;
+    float stepSize_;
+    unsigned stepCount_;
+    unsigned scale_;
+
     QColor backgroundColor_;
     QColor shapeColor_;
     ShapeType shape_;
 
     QPointF computeAstroid(const float t);
+    void onShapeChange();
 
 public slots:
 };

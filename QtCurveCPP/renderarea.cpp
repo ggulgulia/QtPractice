@@ -7,7 +7,7 @@ RenderArea::RenderArea(QWidget *parent):
     shapeColor_{255,255,255},
     shape_{ShapeType::Astroid_}
 {
-
+    onShapeChange();
 }
 
 QSize RenderArea::minimumSizeHint() const{
@@ -18,6 +18,10 @@ QSize RenderArea::sizeHint() const {
     return QSize{400, 400};
 }
 
+void RenderArea::setShapes(ShapeType shape){
+    shape_ = shape;
+    onShapeChange();
+}
 QPointF RenderArea::computeAstroid(const float t){
 
     const float cos_t{cos(t)};
@@ -26,13 +30,14 @@ QPointF RenderArea::computeAstroid(const float t){
     const float y{sin_t*sin_t*sin_t};
     return {x,y};
 }
-void RenderArea::paintEvent(QPaintEvent* event){
-    Q_UNUSED(event);
-    QPainter painter(this);
 
+void RenderArea::onShapeChange(){
     switch(shape_){
         case ShapeType::Astroid_:
         backgroundColor_ = Qt::red;
+        scale_ = 40;
+        intervalLength_ = 2*M_PI;
+        stepCount_ = 256;
         break;
     case ShapeType::Cycloid_:
         backgroundColor_ = Qt::green;
@@ -46,19 +51,22 @@ void RenderArea::paintEvent(QPaintEvent* event){
     default:
         break;
     }
+}
+
+void RenderArea::paintEvent(QPaintEvent* event){
+    Q_UNUSED(event);
+    QPainter painter(this);
 
     painter.setBrush(backgroundColor_);
     painter.setPen(shapeColor_);
     painter.setRenderHint(QPainter::Antialiasing, true);
     painter.drawRect(this->rect());
     QPoint center{rect().center()};
-    float intervalLen{2*M_PI};
-    unsigned stepCount{64};
-    const unsigned scale{40};
-    float stepSize = intervalLen/static_cast<float>(stepCount);
-    for(float t=0; t<intervalLen; t += stepSize){
+
+    stepSize_ = intervalLength_/static_cast<float>(stepCount_);
+    for(float t=0; t<intervalLength_; t += stepSize_){
         QPointF point = computeAstroid(t);
-        QPoint pixel{point.x()*scale+center.x(), point.y()*scale+center.y()};
+        QPoint pixel{point.x()*scale_+center.x(), point.y()*scale_+center.y()};
         painter.drawPoint(pixel);
     }
 }
