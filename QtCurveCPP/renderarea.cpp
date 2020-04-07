@@ -1,4 +1,5 @@
 #include "renderarea.h"
+#include <math.h>
 
 RenderArea::RenderArea(QWidget *parent):
     QWidget(parent),
@@ -17,6 +18,14 @@ QSize RenderArea::sizeHint() const {
     return QSize{400, 400};
 }
 
+QPointF RenderArea::computeAstroid(const float t){
+
+    const float cos_t{cos(t)};
+    const float sin_t{sin(t)};
+    const float x{cos_t*cos_t*cos_t};
+    const float y{sin_t*sin_t*sin_t};
+    return {x,y};
+}
 void RenderArea::paintEvent(QPaintEvent* event){
     Q_UNUSED(event);
     QPainter painter(this);
@@ -42,5 +51,14 @@ void RenderArea::paintEvent(QPaintEvent* event){
     painter.setPen(shapeColor_);
     painter.setRenderHint(QPainter::Antialiasing, true);
     painter.drawRect(this->rect());
-    painter.drawLine(this->rect().topLeft(), this->rect().bottomRight());
+    QPoint center{rect().center()};
+    float intervalLen{2*M_PI};
+    unsigned stepCount{64};
+    const unsigned scale{40};
+    float stepSize = intervalLen/static_cast<float>(stepCount);
+    for(float t=0; t<intervalLen; t += stepSize){
+        QPointF point = computeAstroid(t);
+        QPoint pixel{point.x()*scale+center.x(), point.y()*scale+center.y()};
+        painter.drawPoint(pixel);
+    }
 }

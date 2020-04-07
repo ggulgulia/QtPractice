@@ -35,6 +35,8 @@ private:
     QColor shapeColor_;
     ShapeType shape_;
 
+    QPointF computeAstroid(const float t);
+
 public slots:
 };
 
