@@ -7,7 +7,6 @@ RenderArea::RenderArea(QWidget *parent):
     shape_{ShapeType::Astroid_},
     shape2_{new Astroid()}
 {
-    onShapeChange();
 }
 
 QSize RenderArea::minimumSizeHint() const{
@@ -18,33 +17,21 @@ QSize RenderArea::sizeHint() const {
     return QSize{400, 400};
 }
 
-void RenderArea::setShapes(ShapeType shape){
+void RenderArea::setShape(ShapeType shape){
     shape_ = shape;
-    onShapeChange();
 }
 
+void RenderArea::setShape(Shape* shape){
+    //free memory
+    if(shape2_){ delete shape2_;}
+    shape2_ = shape;
+}
 
-
-void RenderArea::onShapeChange(){
-    switch(shape_){
-        case ShapeType::Astroid_:
-        backgroundColor_ = Qt::red;
-        scale_ = 96;
-        intervalLength_ = 2*M_PI;
-        stepCount_ = 256;
-        break;
-    case ShapeType::Cycloid_:
-
-        backgroundColor_ = Qt::green;
-        break;
-    case ShapeType::HuygensCycloid_:
-        backgroundColor_ = Qt::yellow;
-        break;
-    case ShapeType::HypoCycloid_:
-        backgroundColor_ = Qt::magenta;
-        break;
-    default:
-        break;
+void RenderArea::transformPoints(QPointF* points, const QPoint point,
+                                 const unsigned numPoints){
+    QPointF pointf = static_cast<QPointF>(point);
+    for(unsigned i=0; i<numPoints; ++i){
+        points[i]+= pointf;
     }
 }
 
@@ -59,9 +46,10 @@ void RenderArea::paintEvent(QPaintEvent* event){
     QPoint center{rect().center()};
 
     stepSize_ = intervalLength_/static_cast<float>(stepCount_);
-    for(float t=0; t<intervalLength_; t += stepSize_){
-        QPointF point = shape2_->computePoint(t);
-        QPoint pixel{point.x()*scale_+center.x(), point.y()*scale_+center.y()};
-        painter.drawPoint(pixel);
-    }
+
+     QPointF* points = shape2_->computePoints();
+     const unsigned numPoints{shape2_->getNumPoints()};
+
+     transformPoints(points, center, numPoints);
+     painter.drawPoints(points, numPoints);
 }

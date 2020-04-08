@@ -31,7 +31,8 @@ public:
     void setBackgroundColor(QColor color){backgroundColor_ = color;}
     QColor getBackgroundColor()const{return backgroundColor_;}
 
-    void setShapes(ShapeType shape);
+    void setShape(ShapeType shape);
+    void setShape(Shape* shape);
     ShapeType getShapes()const{return shape_;}
 protected:
     void paintEvent(QPaintEvent* event) Q_DECL_OVERRIDE;
@@ -48,7 +49,8 @@ private:
     ShapeType shape_;
     Shape* shape2_{nullptr} ;
 
-    void onShapeChange();
+    void transformPoints(QPointF* points, const QPoint point,
+                                     const unsigned numPoints);
 
 public slots:
 };

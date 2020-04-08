@@ -3,6 +3,11 @@
 
 #include <QMainWindow>
 #include <memory>
+#include "shape.h"
+#include "astroid.h"
+#include "cycloid.h"
+#include "huygenscycloid.h"
+#include "hypocycloid.h"
 
 /**
  * This is a different main
