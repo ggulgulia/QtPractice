@@ -8,6 +8,7 @@
 #include "cycloid.h"
 #include "huygenscycloid.h"
 #include "hypocycloid.h"
+#include "line.hpp"
 
 /**
  * This is a different main
@@ -42,6 +43,8 @@ private slots:
     void on_btnHuygensCycloid_clicked();
 
     void on_btnHypocycloid_clicked();
+
+    void on_btnLine_clicked();
 
 private:
     Ui::MainWindow *ui_;

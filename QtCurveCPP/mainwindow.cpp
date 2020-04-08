@@ -40,3 +40,10 @@ void MainWindow::on_btnHypocycloid_clicked()
     ui_->renderarea->setBackgroundColor(Qt::magenta);
     ui_->renderarea->repaint();
 }
+
+void MainWindow::on_btnLine_clicked()
+{
+    ui_->renderarea->setShape(new Line());
+    ui_->renderarea->setBackgroundColor(Qt::darkGreen);
+    ui_->renderarea->repaint();
+}

@@ -31,7 +31,8 @@ SOURCES += \
     astroid.cpp \
     cycloid.cpp \
     huygenscycloid.cpp \
-    hypocycloid.cpp
+    hypocycloid.cpp \
+    line.cpp
 
 HEADERS += \
     renderarea.h \
@@ -40,7 +41,8 @@ HEADERS += \
     astroid.h \
     cycloid.h \
     huygenscycloid.h \
-    hypocycloid.h
+    hypocycloid.h \
+    line.hpp
 
 FORMS += \
         mainwindow.ui
