@@ -5,9 +5,9 @@
 class HypoCycloid : public Shape
 {
 private:
-    float intervalLength_{4*M_PI};
+    float intervalLength_{2*M_PI};
     unsigned numPoints_{256};
-    unsigned scale_{4};
+    unsigned scale_{15};
 
 public:
     HypoCycloid();

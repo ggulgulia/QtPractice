@@ -4,8 +4,8 @@ HypoCycloid::HypoCycloid(){ }
 HypoCycloid::~HypoCycloid(){ }
 
 QPointF HypoCycloid::computePoint(const float t){
-    const float x{scale_*0.f};
-    const float y{scale_*0.f};
+    const float x{2*scale_*(2*cos(t) + cos(2*t))};
+    const float y{2*scale_*(2*sin(t) - sin(2*t))};
     return {x, y};
 }
 

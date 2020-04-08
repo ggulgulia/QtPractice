@@ -5,9 +5,9 @@
 class Cycloid : public Shape
 {
 private:
-    float intervalLength_{4*M_PI};
-    unsigned numPoints_{256};
-    unsigned scale_{20};
+    float intervalLength_{8*M_PI};
+    unsigned numPoints_{128};
+    unsigned scale_{4};
 
 public:
     Cycloid();
