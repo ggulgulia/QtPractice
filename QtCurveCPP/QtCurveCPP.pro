@@ -26,11 +26,21 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    renderarea.cpp
+    renderarea.cpp \
+    shape.cpp \
+    astroid.cpp \
+    cycloid.cpp \
+    huygenscycloid.cpp \
+    hypocycloid.cpp
 
 HEADERS += \
     renderarea.h \
-    mainwindow.h
+    mainwindow.h \
+    shape.h \
+    astroid.h \
+    cycloid.h \
+    huygenscycloid.h \
+    hypocycloid.h
 
 FORMS += \
         mainwindow.ui

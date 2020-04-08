@@ -1,11 +1,11 @@
 #include "renderarea.h"
-#include <math.h>
 
 RenderArea::RenderArea(QWidget *parent):
     QWidget(parent),
     backgroundColor_{0, 0, 255},
     shapeColor_{255,255,255},
-    shape_{ShapeType::Astroid_}
+    shape_{ShapeType::Astroid_},
+    shape2_{new Astroid()}
 {
     onShapeChange();
 }
@@ -22,24 +22,19 @@ void RenderArea::setShapes(ShapeType shape){
     shape_ = shape;
     onShapeChange();
 }
-QPointF RenderArea::computeAstroid(const float t){
 
-    const float cos_t{cos(t)};
-    const float sin_t{sin(t)};
-    const float x{cos_t*cos_t*cos_t};
-    const float y{sin_t*sin_t*sin_t};
-    return {x,y};
-}
+
 
 void RenderArea::onShapeChange(){
     switch(shape_){
         case ShapeType::Astroid_:
         backgroundColor_ = Qt::red;
-        scale_ = 40;
+        scale_ = 96;
         intervalLength_ = 2*M_PI;
         stepCount_ = 256;
         break;
     case ShapeType::Cycloid_:
+
         backgroundColor_ = Qt::green;
         break;
     case ShapeType::HuygensCycloid_:
@@ -65,7 +60,7 @@ void RenderArea::paintEvent(QPaintEvent* event){
 
     stepSize_ = intervalLength_/static_cast<float>(stepCount_);
     for(float t=0; t<intervalLength_; t += stepSize_){
-        QPointF point = computeAstroid(t);
+        QPointF point = shape2_->computePoint(t);
         QPoint pixel{point.x()*scale_+center.x(), point.y()*scale_+center.y()};
         painter.drawPoint(pixel);
     }

@@ -5,12 +5,19 @@
 #include <QPaintEvent>
 #include <QPainter>
 #include <QColor>
+#include <math.h>
+#include "shape.h"
+#include "astroid.h"
+
 
 class RenderArea : public QWidget
 {
     Q_OBJECT
 public:
     explicit RenderArea(QWidget *parent = nullptr);
+    ~RenderArea(){
+        delete shape2_;
+    }
     QSize minimumSizeHint() const Q_DECL_OVERRIDE;
     QSize sizeHint() const Q_DECL_OVERRIDE;
     enum class ShapeType
@@ -39,8 +46,8 @@ private:
     QColor backgroundColor_;
     QColor shapeColor_;
     ShapeType shape_;
+    Shape* shape2_{nullptr} ;
 
-    QPointF computeAstroid(const float t);
     void onShapeChange();
 
 public slots:
