@@ -1,4 +1,6 @@
 *.pdf
+build*
+*.o
 *.swap
 *.swp
 *.swo
