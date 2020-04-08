@@ -51,5 +51,5 @@ void RenderArea::paintEvent(QPaintEvent* event){
      const unsigned numPoints{shape2_->getNumPoints()};
 
      transformPoints(points, center, numPoints);
-     painter.drawPoints(points, numPoints);
+     painter.drawPolyline(points, numPoints);
 }
