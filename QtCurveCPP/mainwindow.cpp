@@ -17,18 +17,21 @@ void MainWindow::on_btnAstroid_clicked()
 {
     ui_->renderarea->setShape(new Astroid());
     ui_->renderarea->repaint();
+    ui_->spinScale->setValue(ui_->renderarea->getScale());
 }
 
 void MainWindow::on_btnCycloid_clicked()
 {
      ui_->renderarea->setShape(new Cycloid());
      ui_->renderarea->repaint();
+     ui_->spinScale->setValue(ui_->renderarea->getScale());
 }
 
 void MainWindow::on_btnHuygensCycloid_clicked()
 {
     ui_->renderarea->setShape(new HuygensCycloid());
     ui_->renderarea->repaint();
+    ui_->spinScale->setValue(ui_->renderarea->getScale());
 }
 
 void MainWindow::on_btnHypocycloid_clicked()
@@ -41,6 +44,7 @@ void MainWindow::on_btnLine_clicked()
 {
     ui_->renderarea->setShape(new Line());
     ui_->renderarea->repaint();
+    ui_->spinScale->setValue(ui_->renderarea->getScale());
 }
 
 void MainWindow::on_spinScale_valueChanged(double value)

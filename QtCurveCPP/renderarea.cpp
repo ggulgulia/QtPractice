@@ -35,6 +35,11 @@ void RenderArea::setScale(const float scale){
     }
 }
 
+float RenderArea::getScale() const
+{
+    return shape_->getScale();
+}
+
 void RenderArea::transformPoints(const QPoint point){
     QPointF pointf = static_cast<QPointF>(point);
     for(unsigned i=0; i<points_.size(); ++i){
@@ -55,7 +60,7 @@ void RenderArea::paintEvent(QPaintEvent* event){
      points_.clear();
      shape_->computePoints(points_);
      transformPoints(center);
-     for(unsigned i=0; i<numPoints; ++i){
-         painter.drawPoint(points_[i]);
-     }
+     for(unsigned i=1; i<numPoints; ++i){
+         painter.drawLine(points_[i], points_[i-1]);
+
 }
