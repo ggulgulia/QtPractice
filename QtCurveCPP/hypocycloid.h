@@ -13,7 +13,7 @@ public:
     HypoCycloid();
     ~HypoCycloid();
     QPointF computePoint(const float t) override;
-    void computePoints(QPointF* points) override;
+    void computePoints(std::vector<QPointF>&  points) override;
     unsigned getNumPoints()const noexcept override;
 };
 

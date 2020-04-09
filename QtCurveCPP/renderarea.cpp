@@ -10,7 +10,6 @@ RenderArea::~RenderArea(){
             /* call delete only if they
             * point to a memory location */
             if(shape_) delete shape_;
-            if(points_) delete[] points_;
 }
 
 QSize RenderArea::minimumSizeHint() const{
@@ -28,17 +27,15 @@ void RenderArea::setShape(Shape* shape){
     shape_ = shape;
 }
 
-void RenderArea::transformPoints(QPointF* points, const QPoint point,
-                                 const unsigned numPoints){
+void RenderArea::transformPoints(const QPoint point){
     QPointF pointf = static_cast<QPointF>(point);
-    for(unsigned i=0; i<numPoints; ++i){
-        points[i]+= pointf;
+    for(unsigned i=0; i<points_.size(); ++i){
+        points_[i]+= pointf;
     }
 }
 
 void RenderArea::paintEvent(QPaintEvent* event){
-    Q_UNUSED(event);
-    QPainter painter(this);
+  QPainter painter(this);
 
     painter.setBrush(backgroundColor_);
     painter.setPen(shapeColor_);
@@ -46,12 +43,11 @@ void RenderArea::paintEvent(QPaintEvent* event){
     painter.drawRect(this->rect());
     QPoint center{rect().center()};
 
-    stepSize_ = intervalLength_/static_cast<float>(stepCount_);
-
-    //if(points_){delete[] points_;}
      const unsigned numPoints{shape_->getNumPoints()};
-     points_ = new QPointF[numPoints];
+     points_.clear();
      shape_->computePoints(points_);
-     transformPoints(points_, center, numPoints);
-     painter.drawPoints(points_, numPoints);
+     transformPoints(center);
+     for(unsigned i=0; i<numPoints; ++i){
+         painter.drawPoint(points_[i]);
+     }
 }

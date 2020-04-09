@@ -8,11 +8,11 @@ QPointF HuygensCycloid::computePoint(const float t){
     return {x, y};
 }
 
-void HuygensCycloid::computePoints(QPointF* points){
+void HuygensCycloid::computePoints(std::vector<QPointF>&  points){
     const float stepSize = intervalLength_/static_cast<float>(numPoints_);
     float t{0.f};
     for(unsigned i=0; i<numPoints_; ++i){
-       points[i] = computePoint(t);
+       points.push_back(computePoint(t));
        t +=stepSize;
     }
 }
