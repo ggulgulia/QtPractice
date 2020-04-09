@@ -9,15 +9,13 @@ QPointF HypoCycloid::computePoint(const float t){
     return {x, y};
 }
 
-QPointF* HypoCycloid::computePoints(){
-    QPointF* points = new QPointF[numPoints_];
+void HypoCycloid::computePoints(QPointF* points){
     const float stepSize = intervalLength_/static_cast<float>(numPoints_);
-    unsigned i=0;
-    for(float t=0; t<intervalLength_; t +=stepSize){
+    float t{0.f};
+    for(unsigned i=0; i<numPoints_ ; ++i){
        points[i] = computePoint(t);
-       i++;
+       t +=stepSize;
     }
-    return points;
 }
 unsigned HypoCycloid::getNumPoints()const noexcept{
     return numPoints_;

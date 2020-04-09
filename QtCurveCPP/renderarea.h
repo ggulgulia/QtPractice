@@ -15,9 +15,7 @@ class RenderArea : public QWidget
     Q_OBJECT
 public:
     explicit RenderArea(QWidget *parent = nullptr);
-    ~RenderArea(){
-        delete shape_;
-    }
+    ~RenderArea();
     QSize minimumSizeHint() const Q_DECL_OVERRIDE;
     QSize sizeHint() const Q_DECL_OVERRIDE;
 
@@ -37,6 +35,7 @@ private:
 
     QColor backgroundColor_;
     QColor shapeColor_;
+    QPointF* points_{nullptr};
     Shape* shape_{nullptr} ;
 
     void transformPoints(QPointF* points, const QPoint point,

@@ -4,8 +4,13 @@ RenderArea::RenderArea(QWidget *parent):
     QWidget(parent),
     backgroundColor_{0, 0, 255},
     shapeColor_{255,255,255},
-    shape_{new Astroid()}
-{
+    shape_{new Astroid()}{      }
+
+RenderArea::~RenderArea(){
+            /* call delete only if they
+            * point to a memory location */
+            if(shape_) delete shape_;
+            if(points_) delete[] points_;
 }
 
 QSize RenderArea::minimumSizeHint() const{
@@ -43,9 +48,10 @@ void RenderArea::paintEvent(QPaintEvent* event){
 
     stepSize_ = intervalLength_/static_cast<float>(stepCount_);
 
-     QPointF* points = shape_->computePoints();
+    //if(points_){delete[] points_;}
      const unsigned numPoints{shape_->getNumPoints()};
-
-     transformPoints(points, center, numPoints);
-     painter.drawPolyline(points, numPoints);
+     points_ = new QPointF[numPoints];
+     shape_->computePoints(points_);
+     transformPoints(points_, center, numPoints);
+     painter.drawPoints(points_, numPoints);
 }

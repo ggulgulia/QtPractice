@@ -13,7 +13,7 @@ public:
     Cycloid();
     ~Cycloid();
     QPointF computePoint(const float t) override;
-    QPointF* computePoints() override;
+    void computePoints(QPointF* points) override;
     unsigned getNumPoints()const noexcept override;
 };
 
