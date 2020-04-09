@@ -13,7 +13,7 @@ public:
     HuygensCycloid();
     ~HuygensCycloid();
     QPointF computePoint(const float t)override;
-    QPointF* computePoints() override;
+    void computePoints(std::vector<QPointF>&  points) override;
     unsigned getNumPoints()const noexcept override;
 };
 

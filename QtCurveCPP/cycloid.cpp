@@ -8,15 +8,13 @@ QPointF Cycloid::computePoint(const float t){
     return {x, y};
 }
 
-QPointF* Cycloid::computePoints(){
-    QPointF* points = new QPointF[numPoints_];
+void Cycloid::computePoints(std::vector<QPointF>&  points){
     const float stepSize = intervalLength_/static_cast<float>(numPoints_);
-    unsigned i=0;
-    for(float t=-0.5*intervalLength_; t<0.5*intervalLength_; t +=stepSize){
-       points[i] = computePoint(t);
-       i++;
+    float t{-0.5f*intervalLength_};
+    for(unsigned i=0; i<numPoints_; ++i){
+       points.push_back(computePoint(t));
+       t += stepSize;
     }
-    return points;
 }
 unsigned Cycloid::getNumPoints()const noexcept{
     return numPoints_;

@@ -15,9 +15,7 @@ class RenderArea : public QWidget
     Q_OBJECT
 public:
     explicit RenderArea(QWidget *parent = nullptr);
-    ~RenderArea(){
-        delete shape_;
-    }
+    ~RenderArea();
     QSize minimumSizeHint() const Q_DECL_OVERRIDE;
     QSize sizeHint() const Q_DECL_OVERRIDE;
 
@@ -30,17 +28,13 @@ protected:
 
 signals:
 private:
-    float intervalLength_;
-    float stepSize_;
-    unsigned stepCount_;
-    unsigned scale_;
 
     QColor backgroundColor_;
     QColor shapeColor_;
+    std::vector<QPointF> points_;
     Shape* shape_{nullptr} ;
 
-    void transformPoints(QPointF* points, const QPoint point,
-                                     const unsigned numPoints);
+    void transformPoints(const QPoint point);
 
 public slots:
 };

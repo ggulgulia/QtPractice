@@ -4,8 +4,12 @@ RenderArea::RenderArea(QWidget *parent):
     QWidget(parent),
     backgroundColor_{0, 0, 255},
     shapeColor_{255,255,255},
-    shape_{new Astroid()}
-{
+    shape_{new Astroid()}{      }
+
+RenderArea::~RenderArea(){
+            /* call delete only if they
+            * point to a memory location */
+            if(shape_) delete shape_;
 }
 
 QSize RenderArea::minimumSizeHint() const{
@@ -25,17 +29,15 @@ void RenderArea::setShape(Shape* shape){
     shape_ = shape;
 }
 
-void RenderArea::transformPoints(QPointF* points, const QPoint point,
-                                 const unsigned numPoints){
+void RenderArea::transformPoints(const QPoint point){
     QPointF pointf = static_cast<QPointF>(point);
-    for(unsigned i=0; i<numPoints; ++i){
-        points[i]+= pointf;
+    for(unsigned i=0; i<points_.size(); ++i){
+        points_[i]+= pointf;
     }
 }
 
 void RenderArea::paintEvent(QPaintEvent* event){
-    Q_UNUSED(event);
-    QPainter painter(this);
+  QPainter painter(this);
 
     painter.setBrush(backgroundColor_);
     painter.setPen(shapeColor_);
@@ -43,11 +45,11 @@ void RenderArea::paintEvent(QPaintEvent* event){
     painter.drawRect(this->rect());
     QPoint center{rect().center()};
 
-    stepSize_ = intervalLength_/static_cast<float>(stepCount_);
-
-     QPointF* points = shape_->computePoints();
      const unsigned numPoints{shape_->getNumPoints()};
-
-     transformPoints(points, center, numPoints);
-     painter.drawPolyline(points, numPoints);
+     points_.clear();
+     shape_->computePoints(points_);
+     transformPoints(center);
+     for(unsigned i=0; i<numPoints; ++i){
+         painter.drawPoint(points_[i]);
+     }
 }
