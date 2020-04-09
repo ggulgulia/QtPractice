@@ -40,6 +40,19 @@ float RenderArea::getScale() const
     return shape_->getScale();
 }
 
+void RenderArea::setIntervalLength(const float interLen)
+{
+    if(shape_){
+        shape_->setIntervalLength(interLen);
+    }
+
+}
+
+float RenderArea::getIntervalLength() const
+{
+    return shape_->getIntervalLength();
+}
+
 void RenderArea::transformPoints(const QPoint point){
     QPointF pointf = static_cast<QPointF>(point);
     for(unsigned i=0; i<points_.size(); ++i){
@@ -48,6 +61,7 @@ void RenderArea::transformPoints(const QPoint point){
 }
 
 void RenderArea::paintEvent(QPaintEvent* event){
+    Q_UNUSED(event);
   QPainter painter(this);
 
     painter.setBrush(backgroundColor_);
@@ -62,5 +76,5 @@ void RenderArea::paintEvent(QPaintEvent* event){
      transformPoints(center);
      for(unsigned i=1; i<numPoints; ++i){
          painter.drawLine(points_[i], points_[i-1]);
-
+     }
 }

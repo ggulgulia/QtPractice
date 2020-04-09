@@ -32,3 +32,13 @@ float HuygensCycloid::getScale() const
 {
     return scale_;
 }
+
+void HuygensCycloid::setIntervalLength(const float interLen)
+{
+    intervalLength_ = interLen;
+}
+
+float HuygensCycloid::getIntervalLength() const
+{
+    return intervalLength_;
+}

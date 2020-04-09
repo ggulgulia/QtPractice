@@ -31,3 +31,13 @@ float Line::getScale() const
 {
     return scale_;
 }
+
+void Line::setIntervalLength(const float interLen)
+{
+    intervalLength_ = interLen;
+}
+
+float Line::getIntervalLength() const
+{
+    return intervalLength_;
+}

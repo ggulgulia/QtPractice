@@ -13,6 +13,8 @@ class Shape{
     virtual unsigned getNumPoints()const noexcept=0;
     virtual void setScale(const float scale) = 0;
     virtual float getScale()const = 0;
+    virtual void setIntervalLength(const float interLen) = 0;
+    virtual float getIntervalLength()const = 0;
 
        Shape();
        virtual ~Shape();

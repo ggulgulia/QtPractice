@@ -17,6 +17,8 @@ public:
     unsigned getNumPoints()const noexcept override;
     void setScale(const float scale) override;
     float getScale()const override;
+    void setIntervalLength(const float interLen) override;
+    float getIntervalLength()const override;
 };
 
 #endif // HUYGENSCYCLOID_H

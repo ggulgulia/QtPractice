@@ -25,6 +25,8 @@ public:
     void setScale(const float scale);
     float getScale()const;
     Shape* getShapes()const{return shape_;}
+    void setIntervalLength(const float interLen);
+    float getIntervalLength()const;
 protected:
     void paintEvent(QPaintEvent* event) Q_DECL_OVERRIDE;
 

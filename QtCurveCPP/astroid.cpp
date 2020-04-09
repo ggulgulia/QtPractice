@@ -41,3 +41,13 @@ float Astroid::getScale() const
 {
     return scale_;
 }
+
+void Astroid::setIntervalLength(const float interLen)
+{
+    intervalLength_ = interLen;
+}
+
+float Astroid::getIntervalLength() const
+{
+    return intervalLength_;
+}

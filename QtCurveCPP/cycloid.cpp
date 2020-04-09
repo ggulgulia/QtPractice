@@ -32,3 +32,13 @@ float Cycloid::getScale() const
 {
     return scale_;
 }
+
+void Cycloid::setIntervalLength(const float interLen)
+{
+    intervalLength_ = interLen;
+}
+
+float Cycloid::getIntervalLength() const
+{
+    return intervalLength_;
+}

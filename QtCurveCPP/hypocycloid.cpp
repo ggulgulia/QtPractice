@@ -33,3 +33,13 @@ float HypoCycloid::getScale() const
 {
     return scale_;
 }
+
+void HypoCycloid::setIntervalLength(const float interLen)
+{
+    intervalLength_ = interLen;
+}
+
+float HypoCycloid::getIntervalLength() const
+{
+    return intervalLength_;
+}
