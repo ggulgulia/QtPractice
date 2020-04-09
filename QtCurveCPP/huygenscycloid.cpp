@@ -19,3 +19,16 @@ void HuygensCycloid::computePoints(std::vector<QPointF>&  points){
 unsigned HuygensCycloid::getNumPoints()const noexcept{
     return numPoints_;
 }
+
+void HuygensCycloid::setScale(const float scale)
+{
+    if(scale < 0.0){
+        throw std::invalid_argument(" negative scale value not permitted\n");
+    }
+    scale_ = scale;
+}
+
+float HuygensCycloid::getScale() const
+{
+    return scale_;
+}

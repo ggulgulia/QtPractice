@@ -15,6 +15,8 @@ public:
     QPointF computePoint(const float t) override;
     void computePoints(std::vector<QPointF>&  points) override;
     unsigned getNumPoints()const noexcept override;
+    void setScale(const float scale) override;
+    float getScale()const override;
 };
 
 #endif // CYCLOID_H

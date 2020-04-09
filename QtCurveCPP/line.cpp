@@ -18,3 +18,16 @@ void Line::computePoints(std::vector<QPointF>&  points){
 unsigned Line::getNumPoints()const noexcept{
     return numPoints_;
 }
+
+void Line::setScale(const float scale)
+{
+    if(scale < 0.0){
+        throw std::invalid_argument(" negative scale value not permitted\n");
+    }
+    scale_ = scale;
+}
+
+float Line::getScale() const
+{
+    return scale_;
+}

@@ -42,3 +42,9 @@ void MainWindow::on_btnLine_clicked()
     ui_->renderarea->setShape(new Line());
     ui_->renderarea->repaint();
 }
+
+void MainWindow::on_spinScale_valueChanged(double value)
+{
+    ui_->renderarea->setScale(static_cast<float>(value));
+    ui_->renderarea->repaint();
+}

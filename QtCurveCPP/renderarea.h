@@ -22,6 +22,7 @@ public:
     void setBackgroundColor(QColor color);
     QColor getBackgroundColor()const;
     void setShape(Shape* shape);
+    void setScale(const float scale);
     Shape* getShapes()const{return shape_;}
 protected:
     void paintEvent(QPaintEvent* event) Q_DECL_OVERRIDE;

@@ -14,7 +14,7 @@ QPointF Astroid::computePoint(const float t)
 {
     const float cos_t{cos(t)};
     const float sin_t{sin(t)};
-    return {scale_*cos_t*cos_t*cos_t,scale_*sin_t*sin_t*sin_t};
+    return {scale_*cos_t*cos_t*cos_t, scale_*sin_t*sin_t*sin_t};
 }
 
 void Astroid::computePoints(std::vector<QPointF>&  points){
@@ -27,4 +27,17 @@ void Astroid::computePoints(std::vector<QPointF>&  points){
 }
 unsigned Astroid::getNumPoints()const noexcept{
     return numPoints_;
+}
+
+void Astroid::setScale(const float scale)
+{
+    if(scale < 0.0){
+        throw std::invalid_argument(" negative scale value not permitted\n");
+    }
+    scale_ = scale;
+}
+
+float Astroid::getScale() const
+{
+    return scale_;
 }

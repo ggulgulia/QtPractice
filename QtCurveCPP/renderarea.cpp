@@ -29,6 +29,12 @@ void RenderArea::setShape(Shape* shape){
     shape_ = shape;
 }
 
+void RenderArea::setScale(const float scale){
+    if(shape_){
+        shape_->setScale(scale);
+    }
+}
+
 void RenderArea::transformPoints(const QPoint point){
     QPointF pointf = static_cast<QPointF>(point);
     for(unsigned i=0; i<points_.size(); ++i){

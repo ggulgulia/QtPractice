@@ -19,3 +19,16 @@ void Cycloid::computePoints(std::vector<QPointF>&  points){
 unsigned Cycloid::getNumPoints()const noexcept{
     return numPoints_;
 }
+
+void Cycloid::setScale(const float scale)
+{
+    if(scale < 0.0){
+        throw std::invalid_argument(" negative scale value not permitted\n");
+    }
+    scale_ = scale;
+}
+
+float Cycloid::getScale() const
+{
+    return scale_;
+}
