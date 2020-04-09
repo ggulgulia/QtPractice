@@ -21,8 +21,8 @@ public:
     QSize minimumSizeHint() const Q_DECL_OVERRIDE;
     QSize sizeHint() const Q_DECL_OVERRIDE;
 
-    void setBackgroundColor(QColor color){backgroundColor_ = color;}
-    QColor getBackgroundColor()const{return backgroundColor_;}
+    void setBackgroundColor(QColor color);
+    QColor getBackgroundColor()const;
     void setShape(Shape* shape);
     Shape* getShapes()const{return shape_;}
 protected:
