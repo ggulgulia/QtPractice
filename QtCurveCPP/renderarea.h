@@ -16,24 +16,15 @@ class RenderArea : public QWidget
 public:
     explicit RenderArea(QWidget *parent = nullptr);
     ~RenderArea(){
-        delete shape2_;
+        delete shape_;
     }
     QSize minimumSizeHint() const Q_DECL_OVERRIDE;
     QSize sizeHint() const Q_DECL_OVERRIDE;
-    enum class ShapeType
-    {
-        Astroid_,
-        Cycloid_,
-        HuygensCycloid_,
-        HypoCycloid_
-    };
 
     void setBackgroundColor(QColor color){backgroundColor_ = color;}
     QColor getBackgroundColor()const{return backgroundColor_;}
-
-    void setShape(ShapeType shape);
     void setShape(Shape* shape);
-    ShapeType getShapes()const{return shape_;}
+    Shape* getShapes()const{return shape_;}
 protected:
     void paintEvent(QPaintEvent* event) Q_DECL_OVERRIDE;
 
@@ -46,8 +37,7 @@ private:
 
     QColor backgroundColor_;
     QColor shapeColor_;
-    ShapeType shape_;
-    Shape* shape2_{nullptr} ;
+    Shape* shape_{nullptr} ;
 
     void transformPoints(QPointF* points, const QPoint point,
                                      const unsigned numPoints);
