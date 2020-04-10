@@ -51,6 +51,8 @@ private slots:
 
     void on_spinSteps_valueChanged(int arg1);
 
+    void on_btnBackground_clicked();
+
 private:
     void update();
 

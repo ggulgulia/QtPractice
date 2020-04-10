@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>579</width>
+    <height>373</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
      <rect>
       <x>9</x>
       <y>9</y>
-      <width>188</width>
+      <width>251</width>
       <height>260</height>
      </rect>
     </property>
@@ -27,7 +27,7 @@
    <widget class="QPushButton" name="btnAstroid">
     <property name="geometry">
      <rect>
-      <x>301</x>
+      <x>371</x>
       <y>11</y>
       <width>80</width>
       <height>25</height>
@@ -40,7 +40,7 @@
    <widget class="QPushButton" name="btnCycloid">
     <property name="geometry">
      <rect>
-      <x>301</x>
+      <x>371</x>
       <y>42</y>
       <width>80</width>
       <height>25</height>
@@ -53,7 +53,7 @@
    <widget class="QPushButton" name="btnHuygensCycloid">
     <property name="geometry">
      <rect>
-      <x>301</x>
+      <x>371</x>
       <y>73</y>
       <width>80</width>
       <height>25</height>
@@ -66,7 +66,7 @@
    <widget class="QPushButton" name="btnHypocycloid">
     <property name="geometry">
      <rect>
-      <x>301</x>
+      <x>371</x>
       <y>104</y>
       <width>80</width>
       <height>25</height>
@@ -79,7 +79,7 @@
    <widget class="QPushButton" name="btnLine">
     <property name="geometry">
      <rect>
-      <x>301</x>
+      <x>371</x>
       <y>135</y>
       <width>80</width>
       <height>25</height>
@@ -92,7 +92,7 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>270</x>
+      <x>340</x>
       <y>160</y>
       <width>113</width>
       <height>28</height>
@@ -124,7 +124,7 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>210</x>
+      <x>280</x>
       <y>200</y>
       <width>189</width>
       <height>28</height>
@@ -150,10 +150,36 @@
      </item>
     </layout>
    </widget>
+   <widget class="QPushButton" name="btnBackground">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>290</y>
+      <width>91</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Bckg Color</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnLineColor">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>290</y>
+      <width>89</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Line Color</string>
+    </property>
+   </widget>
    <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>280</x>
+      <x>350</x>
       <y>230</y>
       <width>103</width>
       <height>28</height>

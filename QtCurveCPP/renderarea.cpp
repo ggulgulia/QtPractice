@@ -20,7 +20,11 @@ QSize RenderArea::sizeHint() const {
     return QSize{400, 400};
 }
 
-void RenderArea::setBackgroundColor(QColor color){backgroundColor_ = color;}
+void RenderArea::setBackgroundColor(QColor color)
+{
+    backgroundColor_ = color;
+    repaint();
+}
 QColor RenderArea::getBackgroundColor()const{return backgroundColor_;}
 
 void RenderArea::setShape(Shape* shape){
