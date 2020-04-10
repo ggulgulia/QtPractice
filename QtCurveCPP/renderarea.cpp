@@ -20,15 +20,31 @@ QSize RenderArea::sizeHint() const {
     return QSize{400, 400};
 }
 
-void RenderArea::setBackgroundColor(QColor color)
+void RenderArea::setBackgroundColor(QColor color) noexcept
 {
     backgroundColor_ = color;
     repaint();
 }
-QColor RenderArea::getBackgroundColor()const{return backgroundColor_;}
+QColor RenderArea::getBackgroundColor()const noexcept
+{
+    return backgroundColor_;
+}
+
+void RenderArea::setShapeColor(QColor color) noexcept
+{
+    shapeColor_ = color;
+    repaint();
+}
+
+QColor RenderArea::getShapeColor() const noexcept
+{
+    return shapeColor_;
+}
 
 void RenderArea::setShape(Shape* shape){
-    //free memory
+    if(shape == nullptr){
+            throw std::invalid_argument("negative scale value not permitted\n");
+    }
     if(shape_){ delete shape_;}
     shape_ = shape;
 }
@@ -42,12 +58,12 @@ void RenderArea::setScale(const float scale){
     }
 }
 
-float RenderArea::getScale() const
+float RenderArea::getScale() const noexcept
 {
     return shape_->getScale();
 }
 
-void RenderArea::setIntervalLength(const float interLen)
+void RenderArea::setIntervalLength(const float interLen) noexcept
 {
     if(shape_){
         shape_->setIntervalLength(interLen);
@@ -55,7 +71,7 @@ void RenderArea::setIntervalLength(const float interLen)
 
 }
 
-float RenderArea::getIntervalLength() const
+float RenderArea::getIntervalLength() const noexcept
 {
     return shape_->getIntervalLength();
 }

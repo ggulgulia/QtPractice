@@ -81,6 +81,12 @@ void MainWindow::update()
 
 void MainWindow::on_btnBackground_clicked()
 {
-    QColor color = QColorDialog::getColor(Qt::white, this, "change background color");
+    QColor color = QColorDialog::getColor(ui_->renderarea->getBackgroundColor(), this, "change background color");
     ui_->renderarea->setBackgroundColor(color);
+}
+
+void MainWindow::on_btnLineColor_clicked()
+{
+    QColor color = QColorDialog::getColor(ui_->renderarea->getShapeColor(), this, "select line color");
+    ui_->renderarea->setShapeColor(color);
 }

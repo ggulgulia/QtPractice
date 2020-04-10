@@ -19,14 +19,16 @@ public:
     QSize minimumSizeHint() const Q_DECL_OVERRIDE;
     QSize sizeHint() const Q_DECL_OVERRIDE;
 
-    void setBackgroundColor(QColor color);
-    QColor getBackgroundColor()const;
+    void setBackgroundColor(QColor color)noexcept;
+    QColor getBackgroundColor()const noexcept;
+    void setShapeColor(QColor color)noexcept;
+    QColor getShapeColor()const noexcept;
     void setShape(Shape* shape);
     void setScale(const float scale);
-    float getScale()const;
+    float getScale()const noexcept;
     Shape* getShapes()const{return shape_;}
-    void setIntervalLength(const float interLen);
-    float getIntervalLength()const;
+    void setIntervalLength(const float interLen) noexcept;
+    float getIntervalLength()const noexcept;
     void setStepCounts(const unsigned steps);
     unsigned getStepCounts()const noexcept;
 protected:
