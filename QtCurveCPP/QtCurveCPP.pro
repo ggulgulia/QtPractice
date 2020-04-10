@@ -33,7 +33,8 @@ SOURCES += \
     huygenscycloid.cpp \
     hypocycloid.cpp \
     line.cpp \
-    circle.cpp
+    circle.cpp \
+    heart.cpp
 
 HEADERS += \
     renderarea.h \
@@ -44,7 +45,8 @@ HEADERS += \
     huygenscycloid.h \
     hypocycloid.h \
     line.hpp \
-    circle.hpp
+    circle.hpp \
+    heart.hpp
 
 FORMS += \
         mainwindow.ui

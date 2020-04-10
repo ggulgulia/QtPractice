@@ -10,9 +10,11 @@ Cycloid::~Cycloid()
 
 }
 QPointF Cycloid::computePoint(const float t){
-    const float x{2*this->scale_*(1 - cos(t))};
-    const float y{2*this->scale_*(t - sin(t))};
-    return {x, y};
+    const float x{(1 - cos(t))};
+    const float y{(t - sin(t))};
+    /** get a horizontal hypocycloid */
+    QPointF point{y,-1*x};
+    return this->scale_*point;
 }
 
 void Cycloid::computePoints(std::vector<QPointF>&  points){

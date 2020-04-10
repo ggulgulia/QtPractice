@@ -9,6 +9,7 @@
 #include "huygenscycloid.h"
 #include "hypocycloid.h"
 #include "circle.hpp"
+#include "heart.hpp"
 #include "line.hpp"
 
 /**
@@ -50,6 +51,8 @@ private slots:
     void on_spinSteps_valueChanged(int arg1);
     void on_btnBackground_clicked();
     void on_btnLineColor_clicked();
+
+    void on_btnHeart_clicked();
 
 private:
     void update();
