@@ -34,7 +34,8 @@ SOURCES += \
     hypocycloid.cpp \
     line.cpp \
     circle.cpp \
-    heart.cpp
+    heart.cpp \
+    ellipse.cpp
 
 HEADERS += \
     renderarea.h \
@@ -46,7 +47,8 @@ HEADERS += \
     hypocycloid.h \
     line.hpp \
     circle.hpp \
-    heart.hpp
+    heart.hpp \
+    ellipse.hpp
 
 FORMS += \
         mainwindow.ui

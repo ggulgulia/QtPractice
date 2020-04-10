@@ -10,6 +10,7 @@
 #include "hypocycloid.h"
 #include "circle.hpp"
 #include "heart.hpp"
+#include "ellipse.hpp"
 #include "line.hpp"
 
 /**
@@ -43,6 +44,7 @@ private slots:
     void on_btnHuygensCycloid_clicked();
     void on_btnHypocycloid_clicked();
     void on_btnCircle_clicked();
+    void on_btnEllipse_clicked();
     void on_btnLine_clicked();
 
     void on_spinScale_valueChanged(double value);
@@ -53,6 +55,7 @@ private slots:
     void on_btnLineColor_clicked();
 
     void on_btnHeart_clicked();
+
 
 private:
     void update();

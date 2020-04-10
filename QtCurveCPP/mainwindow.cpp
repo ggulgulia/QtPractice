@@ -50,6 +50,12 @@ void MainWindow::on_btnHeart_clicked()
  ui_->renderarea->setShape(new Heart());
 }
 
+
+void MainWindow::on_btnEllipse_clicked()
+{
+    ui_->renderarea->setShape(new Ellipse());
+}
+
 void MainWindow::on_btnLine_clicked()
 {
     ui_->renderarea->setShape(new Line());
