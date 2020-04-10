@@ -57,7 +57,7 @@ private slots:
     void on_btnHeart_clicked();
 
 
-    void on_spinBrushSize_valueChanged(double arg1);
+    void on_spinBrushSize_valueChanged(double thickness);
 
 private:
     void update();
