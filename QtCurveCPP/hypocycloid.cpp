@@ -1,7 +1,18 @@
 #include "hypocycloid.h"
+/**
+float intervalLength_{2*M_PI};
+unsigned numPoints_{256};
+unsigned scale_{15};
+**/
+HypoCycloid::HypoCycloid():Shape{2*M_PI, 256, 15}
+{
 
-HypoCycloid::HypoCycloid(){ }
-HypoCycloid::~HypoCycloid(){ }
+}
+
+HypoCycloid::~HypoCycloid()
+{
+
+}
 
 QPointF HypoCycloid::computePoint(const float t){
     const float x{2*scale_*(2*cos(t) + cos(2*t))};
@@ -10,36 +21,13 @@ QPointF HypoCycloid::computePoint(const float t){
 }
 
 void HypoCycloid::computePoints(std::vector<QPointF>&  points){
-    const float stepSize = intervalLength_/static_cast<float>(numPoints_);
+    const float intervalLength{this->intervalLength_};
+    const unsigned numPoints{this->numPoints_};
+    const float stepSize = intervalLength/static_cast<float>(numPoints);
+
     float t{0.f};
-    for(unsigned i=0; i<numPoints_ ; ++i){
-      points.push_back(computePoint(t));
+    for(unsigned i=0; i<numPoints; ++i){
+       points.push_back(computePoint(t));
        t +=stepSize;
     }
-}
-unsigned HypoCycloid::getNumPoints()const noexcept{
-    return numPoints_;
-}
-
-void HypoCycloid::setScale(const float scale)
-{
-    if(scale < 0.0){
-        throw std::invalid_argument(" negative scale value not permitted\n");
-    }
-    scale_ = scale;
-}
-
-float HypoCycloid::getScale() const
-{
-    return scale_;
-}
-
-void HypoCycloid::setIntervalLength(const float interLen)
-{
-    intervalLength_ = interLen;
-}
-
-float HypoCycloid::getIntervalLength() const
-{
-    return intervalLength_;
 }
