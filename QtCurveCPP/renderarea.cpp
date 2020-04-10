@@ -13,7 +13,7 @@ RenderArea::~RenderArea(){
 }
 
 QSize RenderArea::minimumSizeHint() const{
-    return QSize{200, 200};
+    return QSize{400, 400};
 }
 
 QSize RenderArea::sizeHint() const {
@@ -47,6 +47,7 @@ void RenderArea::setShape(Shape* shape){
     }
     if(shape_){ delete shape_;}
     shape_ = shape;
+    repaint();
 }
 
 void RenderArea::setScale(const float scale){
@@ -78,9 +79,6 @@ float RenderArea::getIntervalLength() const noexcept
 
 void RenderArea::setStepCounts(const unsigned steps)
 {
-    if(steps < 0u){
-        throw std::invalid_argument("negative scale value not permitted\n");
-    }
     if(shape_){
         shape_->setStepCounts(steps);
     }

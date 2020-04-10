@@ -1,6 +1,6 @@
 #include "astroid.h"
 
-Astroid::Astroid(): Shape{2*M_PI,256,96}
+Astroid::Astroid(): Shape{2*M_PI,256,90}
 {
 
 }

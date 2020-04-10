@@ -1,6 +1,6 @@
 #include "line.hpp"
 
-Line::Line(): Shape{100.0f, 256, 10}
+Line::Line(): Shape{100.0f, 100, 10}
 {
 
 }

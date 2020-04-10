@@ -19,36 +19,36 @@ void MainWindow::on_btnAstroid_clicked()
 {
     ui_->renderarea->setShape(new Astroid());
     update();
-    ui_->renderarea->repaint();
 }
 
 void MainWindow::on_btnCycloid_clicked()
 {
      ui_->renderarea->setShape(new Cycloid());
      update();
-     ui_->renderarea->repaint();
 }
 
 void MainWindow::on_btnHuygensCycloid_clicked()
 {
     ui_->renderarea->setShape(new HuygensCycloid());
     update();
-    ui_->renderarea->repaint();
 }
 
 void MainWindow::on_btnHypocycloid_clicked()
 {
     ui_->renderarea->setShape(new HypoCycloid());
     update();
-    ui_->renderarea->repaint();
+}
+
+void MainWindow::on_btnCircle_clicked()
+{
+ ui_->renderarea->setShape(new Circle());
+ update();
 }
 
 void MainWindow::on_btnLine_clicked()
 {
     ui_->renderarea->setShape(new Line());
     update();
-
-    ui_->renderarea->repaint();
 
 }
 

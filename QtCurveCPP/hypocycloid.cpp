@@ -4,7 +4,7 @@ float intervalLength_{2*M_PI};
 unsigned numPoints_{256};
 unsigned scale_{15};
 **/
-HypoCycloid::HypoCycloid():Shape{2*M_PI, 256, 15}
+HypoCycloid::HypoCycloid():Shape{2*M_PI, 256, 40}
 {
 
 }
