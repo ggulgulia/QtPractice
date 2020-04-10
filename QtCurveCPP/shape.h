@@ -14,11 +14,13 @@ protected:
   public:
     virtual QPointF computePoint(const float t) = 0;
     virtual void computePoints(std::vector<QPointF>&  points) = 0;
-    virtual unsigned getNumPoints()const noexcept;
-    virtual void setScale(const float scale);
-    virtual float getScale()const;
-    virtual void setIntervalLength(const float interLen);
-    virtual float getIntervalLength()const;
+    unsigned getNumPoints()const noexcept;
+    void setScale(const float scale) noexcept;
+    float getScale()const noexcept;
+    void setIntervalLength(const float interLen) noexcept;
+    float getIntervalLength()const noexcept;
+    void setStepCounts(const unsigned numPoints)noexcept;
+    unsigned getStepCounts()const noexcept;
 
        Shape();
        Shape(const float interval, const unsigned numPoints,

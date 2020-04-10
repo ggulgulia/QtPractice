@@ -27,6 +27,8 @@ public:
     Shape* getShapes()const{return shape_;}
     void setIntervalLength(const float interLen);
     float getIntervalLength()const;
+    void setStepCounts(const unsigned steps);
+    unsigned getStepCounts()const noexcept;
 protected:
     void paintEvent(QPaintEvent* event) Q_DECL_OVERRIDE;
 

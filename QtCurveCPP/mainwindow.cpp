@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui_{new Ui::MainWindow}
 {
     ui_->setupUi(this);
+    update();
 }
 
 MainWindow::~MainWindow()
@@ -16,36 +17,38 @@ MainWindow::~MainWindow()
 void MainWindow::on_btnAstroid_clicked()
 {
     ui_->renderarea->setShape(new Astroid());
+    update();
     ui_->renderarea->repaint();
-    ui_->spinScale->setValue(ui_->renderarea->getScale());
 }
 
 void MainWindow::on_btnCycloid_clicked()
 {
      ui_->renderarea->setShape(new Cycloid());
-     ui_->renderarea->repaint();
      update();
+     ui_->renderarea->repaint();
 }
 
 void MainWindow::on_btnHuygensCycloid_clicked()
 {
     ui_->renderarea->setShape(new HuygensCycloid());
+    update();
     ui_->renderarea->repaint();
-   update();
 }
 
 void MainWindow::on_btnHypocycloid_clicked()
 {
     ui_->renderarea->setShape(new HypoCycloid());
-    ui_->renderarea->repaint();
     update();
+    ui_->renderarea->repaint();
 }
 
 void MainWindow::on_btnLine_clicked()
 {
     ui_->renderarea->setShape(new Line());
-    ui_->renderarea->repaint();
     update();
+
+    ui_->renderarea->repaint();
+
 }
 
 void MainWindow::on_spinScale_valueChanged(double value)
@@ -61,8 +64,16 @@ void MainWindow::on_spinInterval_valueChanged(double value)
 
 }
 
+void MainWindow::on_spinSteps_valueChanged(int numSteps)
+{
+    ui_->renderarea->setStepCounts(static_cast<unsigned>(numSteps));
+    ui_->renderarea->repaint();
+}
+
+
 void MainWindow::update()
 {
      ui_->spinScale->setValue(ui_->renderarea->getScale());
      ui_->spinInterval->setValue(ui_->renderarea->getIntervalLength());
+     ui_->spinSteps->setValue(ui_->renderarea->getStepCounts());
 }

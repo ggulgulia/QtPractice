@@ -49,6 +49,8 @@ private slots:
     void on_spinScale_valueChanged(double value);
     void on_spinInterval_valueChanged(double value);
 
+    void on_spinSteps_valueChanged(int arg1);
+
 private:
     void update();
 

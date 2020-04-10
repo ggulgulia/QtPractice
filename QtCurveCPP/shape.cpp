@@ -20,25 +20,32 @@ unsigned Shape::getNumPoints()const noexcept{
     return numPoints_;
 }
 
-void Shape::setScale(const float scale)
+void Shape::setScale(const float scale) noexcept
 {
-    if(scale < 0.0){
-        throw std::invalid_argument(" negative scale value not permitted\n");
-    }
     scale_ = scale;
 }
 
-float Shape::getScale() const
+float Shape::getScale() const noexcept
 {
     return scale_;
 }
 
-void Shape::setIntervalLength(const float interLen)
+void Shape::setIntervalLength(const float interLen) noexcept
 {
     intervalLength_ = interLen;
 }
 
-float Shape::getIntervalLength() const
+float Shape::getIntervalLength() const noexcept
 {
     return intervalLength_;
+}
+
+void Shape::setStepCounts(const unsigned numPoints) noexcept
+{
+    numPoints_ = numPoints;
+}
+
+unsigned Shape::getStepCounts() const noexcept
+{
+    return numPoints_;
 }

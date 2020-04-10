@@ -30,6 +30,9 @@ void RenderArea::setShape(Shape* shape){
 }
 
 void RenderArea::setScale(const float scale){
+    if(scale < 0.0){
+        throw std::invalid_argument("negative scale value not permitted\n");
+    }
     if(shape_){
         shape_->setScale(scale);
     }
@@ -51,6 +54,21 @@ void RenderArea::setIntervalLength(const float interLen)
 float RenderArea::getIntervalLength() const
 {
     return shape_->getIntervalLength();
+}
+
+void RenderArea::setStepCounts(const unsigned steps)
+{
+    if(steps < 0u){
+        throw std::invalid_argument("negative scale value not permitted\n");
+    }
+    if(shape_){
+        shape_->setStepCounts(steps);
+    }
+}
+
+unsigned RenderArea::getStepCounts() const noexcept
+{
+    return shape_->getStepCounts();
 }
 
 void RenderArea::transformPoints(const QPoint point){
