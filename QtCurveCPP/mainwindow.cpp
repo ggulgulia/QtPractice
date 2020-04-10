@@ -88,6 +88,7 @@ void MainWindow::update()
      ui_->spinScale->setValue(ui_->renderarea->getScale());
      ui_->spinInterval->setValue(ui_->renderarea->getIntervalLength());
      ui_->spinSteps->setValue(ui_->renderarea->getStepCounts());
+     ui_->spinBrushSize->setValue(ui_->renderarea->getPenThickness());
 }
 
 void MainWindow::on_btnBackground_clicked()

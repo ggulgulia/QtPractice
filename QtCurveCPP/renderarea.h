@@ -41,7 +41,6 @@ signals:
 private:
 
     QColor backgroundColor_;
-    QColor shapeColor_;
     QPen pen_;
     std::vector<QPointF> points_;
     Shape* shape_{nullptr} ;

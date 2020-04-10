@@ -3,10 +3,9 @@
 RenderArea::RenderArea(QWidget *parent):
     QWidget(parent),
     backgroundColor_{0, 0, 255},
-    shapeColor_{255,255,255},
     shape_{new Astroid()}{
     pen_.setWidth(2);
-    pen_.setColor(shapeColor_);
+    pen_.setColor(Qt::white);
 }
 
 RenderArea::~RenderArea(){
@@ -35,14 +34,13 @@ QColor RenderArea::getBackgroundColor()const noexcept
 
 void RenderArea::setShapeColor(QColor color) noexcept
 {
-    shapeColor_ = color;
     pen_.setColor(color);
     repaint();
 }
 
 QColor RenderArea::getShapeColor() const noexcept
 {
-    return shapeColor_;
+    return pen_.color();
 }
 
 void RenderArea::setPenThickness(const float thickness) noexcept
