@@ -7,16 +7,23 @@
 #include <exception>
 
 class Shape{
+protected:
+    float intervalLength_;
+    unsigned numPoints_;
+    unsigned scale_;
   public:
     virtual QPointF computePoint(const float t) = 0;
     virtual void computePoints(std::vector<QPointF>&  points) = 0;
-    virtual unsigned getNumPoints()const noexcept=0;
-    virtual void setScale(const float scale) = 0;
-    virtual float getScale()const = 0;
-    virtual void setIntervalLength(const float interLen) = 0;
-    virtual float getIntervalLength()const = 0;
+    virtual unsigned getNumPoints()const noexcept;
+    virtual void setScale(const float scale);
+    virtual float getScale()const;
+    virtual void setIntervalLength(const float interLen);
+    virtual float getIntervalLength()const;
 
        Shape();
+       Shape(const float interval, const unsigned numPoints,
+             const unsigned scale);
+
        virtual ~Shape();
 };
 

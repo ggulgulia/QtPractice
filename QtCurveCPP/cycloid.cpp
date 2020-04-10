@@ -1,44 +1,28 @@
 #include "cycloid.h"
 
-Cycloid::Cycloid(){ }
-Cycloid::~Cycloid(){ }
+Cycloid::Cycloid(): Shape{8*M_PI,128, 4}
+{
+
+}
+
+Cycloid::~Cycloid()
+{
+
+}
 QPointF Cycloid::computePoint(const float t){
-    const float x{2*scale_*(1 - cos(t))};
-    const float y{2*scale_*(t - sin(t))};
+    const float x{2*this->scale_*(1 - cos(t))};
+    const float y{2*this->scale_*(t - sin(t))};
     return {x, y};
 }
 
 void Cycloid::computePoints(std::vector<QPointF>&  points){
-    const float stepSize = intervalLength_/static_cast<float>(numPoints_);
-    float t{-0.5f*intervalLength_};
-    for(unsigned i=0; i<numPoints_; ++i){
+    const float intervalLength{this->intervalLength_};
+    const unsigned numPoints{this->numPoints_};
+    const float stepSize = intervalLength/static_cast<float>(numPoints);
+
+    float t{-0.5f*intervalLength};
+    for(unsigned i=0; i<numPoints; ++i){
        points.push_back(computePoint(t));
        t += stepSize;
     }
-}
-unsigned Cycloid::getNumPoints()const noexcept{
-    return numPoints_;
-}
-
-void Cycloid::setScale(const float scale)
-{
-    if(scale < 0.0){
-        throw std::invalid_argument(" negative scale value not permitted\n");
-    }
-    scale_ = scale;
-}
-
-float Cycloid::getScale() const
-{
-    return scale_;
-}
-
-void Cycloid::setIntervalLength(const float interLen)
-{
-    intervalLength_ = interLen;
-}
-
-float Cycloid::getIntervalLength() const
-{
-    return intervalLength_;
 }
