@@ -196,6 +196,33 @@
         </item>
        </layout>
       </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_5">
+        <item>
+         <widget class="QLabel" name="labelBrushSze">
+          <property name="text">
+           <string>Pen Thick</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QDoubleSpinBox" name="spinBrushSize">
+          <property name="decimals">
+           <number>1</number>
+          </property>
+          <property name="maximum">
+           <double>20.000000000000000</double>
+          </property>
+          <property name="singleStep">
+           <double>0.100000000000000</double>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
      </layout>
     </item>
    </layout>

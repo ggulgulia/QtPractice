@@ -4,7 +4,10 @@ RenderArea::RenderArea(QWidget *parent):
     QWidget(parent),
     backgroundColor_{0, 0, 255},
     shapeColor_{255,255,255},
-    shape_{new Astroid()}{      }
+    shape_{new Astroid()}{
+    pen_.setWidth(2);
+    pen_.setColor(shapeColor_);
+}
 
 RenderArea::~RenderArea(){
             /* call delete only if they
@@ -33,12 +36,24 @@ QColor RenderArea::getBackgroundColor()const noexcept
 void RenderArea::setShapeColor(QColor color) noexcept
 {
     shapeColor_ = color;
+    pen_.setColor(color);
     repaint();
 }
 
 QColor RenderArea::getShapeColor() const noexcept
 {
     return shapeColor_;
+}
+
+void RenderArea::setPenThickness(const float thickness) noexcept
+{
+    pen_.setWidth(thickness);
+    repaint();
+}
+
+float RenderArea::getPenThickness() const noexcept
+{
+    return pen_.width();
 }
 
 void RenderArea::setShape(Shape* shape){
@@ -101,7 +116,7 @@ void RenderArea::paintEvent(QPaintEvent* event){
   QPainter painter(this);
 
     painter.setBrush(backgroundColor_);
-    painter.setPen(shapeColor_);
+    painter.setPen(pen_);
     painter.setRenderHint(QPainter::Antialiasing, true);
     painter.drawRect(this->rect());
     QPoint center{rect().center()};

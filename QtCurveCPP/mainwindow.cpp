@@ -101,3 +101,8 @@ void MainWindow::on_btnLineColor_clicked()
     QColor color = QColorDialog::getColor(ui_->renderarea->getShapeColor(), this, "select line color");
     ui_->renderarea->setShapeColor(color);
 }
+
+void MainWindow::on_spinBrushSize_valueChanged(double brushSize)
+{
+    ui_->renderarea->setPenThickness(static_cast<float>(brushSize));
+}

@@ -5,6 +5,7 @@
 #include <QPaintEvent>
 #include <QPainter>
 #include <QColor>
+#include <QPen>
 #include <math.h>
 #include "shape.h"
 #include "astroid.h"
@@ -23,6 +24,8 @@ public:
     QColor getBackgroundColor()const noexcept;
     void setShapeColor(QColor color)noexcept;
     QColor getShapeColor()const noexcept;
+    void setPenThickness(const float thickness) noexcept;
+    float getPenThickness()const noexcept;
     void setShape(Shape* shape);
     void setScale(const float scale);
     float getScale()const noexcept;
@@ -39,6 +42,7 @@ private:
 
     QColor backgroundColor_;
     QColor shapeColor_;
+    QPen pen_;
     std::vector<QPointF> points_;
     Shape* shape_{nullptr} ;
 
